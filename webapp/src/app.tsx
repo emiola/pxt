@@ -1453,7 +1453,8 @@ export class ProjectView
                     return pxt.commands.saveOnlyAsync(resp);
                 }
                 return pxt.commands.deployCoreAsync(resp, {
-                    reportDeviceNotFoundAsync: (docPath, compileResult) => this.showDeviceNotFoundDialogAsync(docPath, compileResult)
+                    reportDeviceNotFoundAsync: (docPath, compileResult) => this.showDeviceNotFoundDialogAsync(docPath, compileResult),
+                    reportError: (e) => core.errorNotification(e)
                 })
                     .catch(e => {
                         if (e.notifyUser) {
